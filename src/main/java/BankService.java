@@ -24,6 +24,8 @@ public class BankService {
      */
     public void deposit(double amount){
 
+        this.balance += amount;
+
     }
 
     /**
@@ -33,6 +35,15 @@ public class BankService {
      */
     public void withdraw(double amount){
 
+        double currentBalance = getBalance();
+
+        if (currentBalance < amount) 
+        {
+            return;   
+        }
+        
+        this.balance = currentBalance - amount;
+
     }
 
     /**
@@ -40,6 +51,7 @@ public class BankService {
      * @return the user's balance.
      */
     public double getBalance(){
-        return 0;
+
+        return this.balance;
     }
 }
